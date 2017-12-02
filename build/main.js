@@ -662,7 +662,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var RestApiProvider = (function () {
     function RestApiProvider(http) {
         this.http = http;
-        this.url = "/api/";
+        this.url = "https://www.kcpr.org/wp-json/wp/v2/";
         this.posts = [];
         this.bylines = [];
         this.categories = [];
