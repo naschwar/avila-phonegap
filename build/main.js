@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 138:
+/***/ 137:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -13,11 +13,11 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 138;
+webpackEmptyAsyncContext.id = 137;
 
 /***/ }),
 
-/***/ 179:
+/***/ 178:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -30,7 +30,7 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 179;
+webpackEmptyAsyncContext.id = 178;
 
 /***/ }),
 
@@ -44,11 +44,11 @@ webpackEmptyAsyncContext.id = 179;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__content_content__ = __webpack_require__(225);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__schedule_schedule__ = __webpack_require__(229);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__video_video__ = __webpack_require__(231);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__(122);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_xml2js__ = __webpack_require__(316);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_xml2js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_xml2js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_rest_api_rest_api__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_operator_map__ = __webpack_require__(240);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_operator_map__ = __webpack_require__(233);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -153,7 +153,7 @@ var RadioPage = (function () {
 }());
 RadioPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-radio',template:/*ion-inline-start:"/home/penax/avila/src/pages/radio/radio.html"*/'<ion-header>\n</ion-header>\n\n<ion-content padding>\n  <img src="assets/img/kcpr.jpg" alt="KCPR logo"/>\n  <div>\n    <button ion-button icon-only clear (click)="startAudio()">\n      <ion-icon name="play">\n      </ion-icon> \n    </button>\n  </div>\n  <div>\n    <button ion-button icon-only clear (click)="stopAudio()" color="danger">\n      <ion-icon name="square">\n      </ion-icon>\n    </button>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/penax/avila/src/pages/radio/radio.html"*/
+        selector: 'page-radio',template:/*ion-inline-start:"/home/penax/avila/src/pages/radio/radio.html"*/'<ion-header>\n</ion-header>\n\n<ion-content class="radio-page" padding>\n  <div class="img-wrapper">\n    <img src="assets/img/kcpr.jpg" alt="KCPR logo"/>\n  </div>\n  <div class="buttons">\n    <button ion-button icon-only clear (click)="startAudio()" color="dark">\n      <ion-icon name="play">\n      </ion-icon> \n    </button>\n    <button ion-button icon-only clear (click)="stopAudio()" color="dark">\n      <ion-icon name="square">\n      </ion-icon>\n    </button>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/penax/avila/src/pages/radio/radio.html"*/
     }),
     __metadata("design:paramtypes", [])
 ], RadioPage);
@@ -237,9 +237,9 @@ var ContentPage = (function () {
 }());
 ContentPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-content',template:/*ion-inline-start:"/home/penax/avila/src/pages/content/content.html"*/'<ion-header>\n</ion-header>\n\n<ion-content padding>\n  <ion-list>\n    <button ion-item detail-none *ngFor="let post of posts" (click)="itemTapped($event, post)">\n      <img src="{{ post.better_featured_image.source_url }}"/>\n      <div id="wrapper">\n        <ion-title text-wrap text-uppercase [innerHTML]="post.title.rendered"></ion-title>\n        <div id="byline">\n          <span id="author" [innerHTML]="bylines[post.byline[0]]"></span>\n          <span id="divider">/</span>\n          <span id="category" [innerHTML]="categories[post.categories[0]]"></span>\n        </div>\n      </div>\n    </button>\n  </ion-list>\n  <!--\n  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="page < totalPage">\n    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>\n  </ion-infinite-scroll>\n  `-->\n</ion-content>\n'/*ion-inline-end:"/home/penax/avila/src/pages/content/content.html"*/
+        selector: 'page-content',template:/*ion-inline-start:"/home/penax/avila/src/pages/content/content.html"*/'<ion-header>\n</ion-header>\n\n<ion-content class="content-page" padding>\n  <ion-list>\n    <button ion-item detail-none *ngFor="let post of posts" (click)="itemTapped($event, post)">\n      <img src="{{ post.better_featured_image.source_url }}"/>\n      <div id="wrapper">\n        <ion-title text-wrap text-uppercase [innerHTML]="post.title.rendered"></ion-title>\n        <div id="byline">\n          <span id="author" [innerHTML]="bylines[post.byline[0]]"></span>\n          <span id="divider">/</span>\n          <span id="category" [innerHTML]="categories[post.categories[0]]"></span>\n        </div>\n      </div>\n    </button>\n  </ion-list>\n  <!--\n  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="page < totalPage">\n    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>\n  </ion-infinite-scroll>\n  `-->\n</ion-content>\n'/*ion-inline-end:"/home/penax/avila/src/pages/content/content.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__providers_rest_api_rest_api__["a" /* RestApiProvider */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__providers_rest_api_rest_api__["a" /* RestApiProvider */]])
 ], ContentPage);
 
 //# sourceMappingURL=content.js.map
@@ -275,7 +275,7 @@ PostDetailPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-postdetail',template:/*ion-inline-start:"/home/penax/avila/src/pages/post-detail/post-detail.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <img src="{{ selectedItem.better_featured_image.source_url }}"/>\n  <ion-title text-wrap text-uppercase [innerHTML]="selectedItem.title.rendered"></ion-title>\n  <p [innerHTML]="selectedItem.content.rendered"></p>\n  -->\n</ion-content>\n'/*ion-inline-end:"/home/penax/avila/src/pages/post-detail/post-detail.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
 ], PostDetailPage);
 
 //# sourceMappingURL=post-detail.js.map
@@ -305,18 +305,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var SchedulePage = (function () {
-    function SchedulePage(navCtrl, restApiProvider) {
+    function SchedulePage(navCtrl, loadingCtrl, restApiProvider) {
+        var _this = this;
         this.navCtrl = navCtrl;
+        this.loadingCtrl = loadingCtrl;
         this.restApiProvider = restApiProvider;
         this.programming = "now_playing";
         this.events = [];
+        this.restApiProvider.requestInfo("pages", "include=4638")
+            .subscribe(function (schedule) { return _this.schedule = _this.getCurrentDay(schedule[0]["content"]["rendered"]); });
     }
     SchedulePage.prototype.ionViewDidEnter = function () {
         var _this = this;
         this.restApiProvider.getEvents().subscribe(function (value) {
             _this.events = value;
         });
-        this.schedule = this.restApiProvider.requestInfo("pages", "include=4638");
         this.restApiProvider.getNowPlaying().subscribe(function (value) {
             _this.nowPlaying = value;
         });
@@ -326,13 +329,20 @@ var SchedulePage = (function () {
             item: item
         });
     };
+    SchedulePage.prototype.getCurrentDay = function (schedule) {
+        var string = schedule + '';
+        var scheduleArray = string.split("<h2>");
+        var d = new Date();
+        var n = d.getDay();
+        return ("<h2>" + scheduleArray[n + 1]);
+    };
     return SchedulePage;
 }());
 SchedulePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-schedule',template:/*ion-inline-start:"/home/penax/avila/src/pages/schedule/schedule.html"*/'<ion-header>\n</ion-header>\n\n<ion-content>\n\n  <div padding>\n    <ion-segment [(ngModel)]="programming">\n      <ion-segment-button value="now_playing">\n        Now Playing\n      </ion-segment-button>\n      <ion-segment-button value="shows">\n        Shows\n      </ion-segment-button>\n      <ion-segment-button value="events">\n        Events\n      </ion-segment-button>\n    </ion-segment>\n  </div>\n  \n  <div [ngSwitch]="programming">\n    <ion-list *ngSwitchCase="\'now_playing\'"> \n      <ion-item>\n      </ion-item>\n    </ion-list>\n\n    <div *ngSwitchCase="\'shows\'">\n      <ul>\n        <li *ngFor="let sched of schedule | async" [innerHTML]="sched.content.rendered">\n        </li>\n      </ul>\n    </div>\n\n    <ion-list *ngSwitchCase="\'events\'">\n      <button *ngFor="let event of events" (click)="itemTapped($event, event)" [innerHTML]="event.title">\n      </button>\n    </ion-list>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/penax/avila/src/pages/schedule/schedule.html"*/
+        selector: 'page-schedule',template:/*ion-inline-start:"/home/penax/avila/src/pages/schedule/schedule.html"*/'<ion-header>\n</ion-header>\n\n<ion-content class="schedule-page">\n\n  <div padding>\n    <ion-segment [(ngModel)]="programming">\n      <ion-segment-button value="now_playing">\n        Now Playing\n      </ion-segment-button>\n      <ion-segment-button value="shows">\n        Shows\n      </ion-segment-button>\n      <ion-segment-button value="events">\n        Events\n      </ion-segment-button>\n    </ion-segment>\n  </div>\n  \n  <div [ngSwitch]="programming">\n    <ion-list *ngSwitchCase="\'now_playing\'"> \n      <ion-item>\n      </ion-item>\n    </ion-list>\n\n    <div *ngSwitchCase="\'shows\'">\n      <div class="schedule" [innerHTML]="schedule">\n      </div>\n    </div>\n\n    <ion-list *ngSwitchCase="\'events\'">\n      <button *ngFor="let event of events" (click)="itemTapped($event, event)" [innerHTML]="event.title">\n      </button>\n    </ion-list>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/penax/avila/src/pages/schedule/schedule.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_rest_api_rest_api__["a" /* RestApiProvider */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_2__providers_rest_api_rest_api__["a" /* RestApiProvider */]])
 ], SchedulePage);
 
 //# sourceMappingURL=schedule.js.map
@@ -369,7 +379,7 @@ EventDetailPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-event-detail',template:/*ion-inline-start:"/home/penax/avila/src/pages/event-detail/event-detail.html"*/'<ion-header>\n  <ion-navbar>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <ion-title text-wrap text-uppercase [innerHTML]="selectedItem.title"></ion-title>\n  <img src="{{ selectedItem.image.url }}"/>\n  <p [innerHTML]="selectedItem.description"></p>\n</ion-content>\n'/*ion-inline-end:"/home/penax/avila/src/pages/event-detail/event-detail.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
 ], EventDetailPage);
 
 //# sourceMappingURL=event-detail.js.map
@@ -383,7 +393,8 @@ EventDetailPage = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VideoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_youtube_video_player__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_youtube_service_youtube_service__ = __webpack_require__(232);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -396,27 +407,98 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var VideoPage = (function () {
-    function VideoPage(navCtrl, ytPlayer) {
+    function VideoPage(navCtrl, youtubeService, loadingCtrl, sanitizer) {
         this.navCtrl = navCtrl;
-        this.ytPlayer = ytPlayer;
-        this.channelId = 'UCeb_E0tdRLTthfcpOYjNjjQ'; // KCPR Channel ID
+        this.youtubeService = youtubeService;
+        this.loadingCtrl = loadingCtrl;
+        this.sanitizer = sanitizer;
+        this.videos = [];
+        this.findVideos();
     }
-    VideoPage.prototype.ionViewDidEnter = function () {
+    VideoPage.prototype.findVideos = function () {
+        var _this = this;
+        var loading = this.loadingCtrl.create({});
+        loading.present();
+        this.youtubeService.getVideos().subscribe(function (videos) {
+            _this.videos = videos.items;
+            for (var _i = 0, _a = _this.videos; _i < _a.length; _i++) {
+                var video = _a[_i];
+                _this.convertDate(video.snippet.publishedAt);
+            }
+            loading.dismiss();
+        }, function (err) {
+            console.log(err);
+        });
     };
-    VideoPage.prototype.playVideo = function (videoId) {
-        this.ytPlayer.openVideo(videoId);
+    VideoPage.prototype.sanitizeUrl = function (url) {
+        return this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/" + url);
+    };
+    VideoPage.prototype.convertDate = function (date) {
+        var d = new Date(date);
+        var retString;
+        var monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+        retString = monthNames[d.getMonth()] + " " + d.getDay() + " " + d.getFullYear();
+        return retString;
     };
     return VideoPage;
 }());
 VideoPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-video',template:/*ion-inline-start:"/home/penax/avila/src/pages/video/video.html"*/'<ion-header>\n  <ion-navbar>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <ion-list>\n        <div class="card">\n            <ion-item>\n                <div class="video-container">\n                  <button ion-button (click)="playVideo(KnFvnPnzS2c)">\n                    <ion-icon name="play"></ion-icon>\n                  </button>\n                </div>\n            </ion-item>\n        </div>\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/penax/avila/src/pages/video/video.html"*/
+        selector: 'page-video',template:/*ion-inline-start:"/home/penax/avila/src/pages/video/video.html"*/'<ion-content>\n  <ion-list>\n      <div class="card">\n          <ion-item *ngFor="let video of videos, let i=index">\n              <div class="video-container">\n                <iframe [src]="sanitizeUrl(video.id.videoId)" frameborder="0" width="560" height="315" allowfullscreen="allowfullscreen"></iframe>\n              </div>\n              <div class="video-info-container">\n                <h2 [innerHTML]="video.snippet.title"></h2>\n                <p [innerHTML]="convertDate(video.snippet.publishedAt)"></p>\n              </div>\n          </ion-item>\n      </div>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/penax/avila/src/pages/video/video.html"*/,
+        providers: [__WEBPACK_IMPORTED_MODULE_3__providers_youtube_service_youtube_service__["a" /* YoutubeServiceProvider */]]
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_youtube_video_player__["a" /* YoutubeVideoPlayer */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__providers_youtube_service_youtube_service__["a" /* YoutubeServiceProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["c" /* DomSanitizer */]])
 ], VideoPage);
 
 //# sourceMappingURL=video.js.map
+
+/***/ }),
+
+/***/ 232:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return YoutubeServiceProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var YoutubeServiceProvider = (function () {
+    function YoutubeServiceProvider(http) {
+        this.http = http;
+        this.googleToken = "AIzaSyCGfEUsM_DJzwqSjEeqWoVNpgNxPv5yHq8";
+        this.maxResults = 10;
+        this.channelId = 'UCeb_E0tdRLTthfcpOYjNjjQ';
+        this.url = 'https://www.googleapis.com/youtube/v3/search?part=id,snippet';
+    }
+    YoutubeServiceProvider.prototype.getVideos = function () {
+        return this.http.get(this.url + '&channelId=' + this.channelId + '&type=video&order=date&maxResults=' + this.maxResults + '&key=' + this.googleToken)
+            .map(function (res) { return res.json(); });
+    };
+    return YoutubeServiceProvider;
+}());
+YoutubeServiceProvider = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]])
+], YoutubeServiceProvider);
+
+//# sourceMappingURL=youtube-service.js.map
 
 /***/ }),
 
@@ -440,7 +522,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(299);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_radio_radio__ = __webpack_require__(224);
@@ -450,13 +532,12 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_video_video__ = __webpack_require__(231);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_post_detail_post_detail__ = __webpack_require__(226);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_tabs_tabs__ = __webpack_require__(223);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_status_bar__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_status_bar__ = __webpack_require__(218);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_splash_screen__ = __webpack_require__(222);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__angular_http__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__angular_http__ = __webpack_require__(122);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__angular_common_http__ = __webpack_require__(227);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__providers_rest_api_rest_api__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_native_youtube_video_player__ = __webpack_require__(232);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__providers_yt_yt__ = __webpack_require__(335);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__providers_youtube_service_youtube_service__ = __webpack_require__(232);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -477,7 +558,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 /* added modules */
-
 
 
 
@@ -521,8 +601,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_12__ionic_native_splash_screen__["a" /* SplashScreen */],
             { provide: __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicErrorHandler */] },
             __WEBPACK_IMPORTED_MODULE_15__providers_rest_api_rest_api__["a" /* RestApiProvider */],
-            __WEBPACK_IMPORTED_MODULE_16__ionic_native_youtube_video_player__["a" /* YoutubeVideoPlayer */],
-            __WEBPACK_IMPORTED_MODULE_17__providers_yt_yt__["a" /* YtProvider */]
+            __WEBPACK_IMPORTED_MODULE_16__providers_youtube_service_youtube_service__["a" /* YoutubeServiceProvider */]
         ]
     })
 ], AppModule);
@@ -538,7 +617,7 @@ AppModule = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(218);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(222);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_tabs_tabs__ = __webpack_require__(223);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -570,53 +649,10 @@ var MyApp = (function () {
 MyApp = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/home/penax/avila/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/home/penax/avila/src/app/app.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
 ], MyApp);
 
 //# sourceMappingURL=app.component.js.map
-
-/***/ }),
-
-/***/ 335:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return YtProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(240);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-/*
-  Generated class for the YtProvider provider.
-
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular DI.
-*/
-var YtProvider = (function () {
-    function YtProvider(http) {
-        this.http = http;
-        console.log('Hello YtProvider Provider');
-    }
-    return YtProvider;
-}());
-YtProvider = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]])
-], YtProvider);
-
-//# sourceMappingURL=yt.js.map
 
 /***/ }),
 
@@ -676,7 +712,6 @@ var RestApiProvider = (function () {
         else {
             searchUrl = this.url + endpoint + "?" + query;
         }
-        console.log(searchUrl);
         return this.http.get(searchUrl)
             .retry(5)
             .map(this.extractData)
@@ -690,7 +725,6 @@ var RestApiProvider = (function () {
         else {
             searchUrl = "http://kcpr.org/wp-json/tribe/events/v1/" + endpoint + "?" + query;
         }
-        console.log(searchUrl);
         return this.http.get(searchUrl)
             .retry(5)
             .map(this.extractData)

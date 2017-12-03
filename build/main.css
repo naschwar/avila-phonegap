@@ -25203,7 +25203,7 @@ h1 {
   font-size: 45px;
 }
 
-ion-content ion-list button img {
+.content-page ion-list button img {
   position: relative;
   display: block;
   -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
@@ -25213,7 +25213,7 @@ ion-content ion-list button img {
   height: 97%;
 }
 
-ion-content ion-list button #wrapper {
+.content-page ion-list button #wrapper {
   position: absolute;
   bottom: 3rem;
   left: 0;
@@ -25221,18 +25221,18 @@ ion-content ion-list button #wrapper {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-ion-content ion-list button #wrapper ion-title {
+.content-page ion-list button #wrapper ion-title {
   position: relative;
   padding: 1% 7% 0 7%;
   color: rgba(250, 250, 250, 0.9);
   font-size: 3vh;
 }
 
-ion-content ion-list button #wrapper #byline {
+.content-page ion-list button #wrapper #byline {
   width: 100%;
 }
 
-ion-content ion-list button #wrapper #byline span {
+.content-page ion-list button #wrapper #byline span {
   padding: 0 1%;
   display: inline;
   color: rgba(240, 240, 240, 0.9);
@@ -25240,7 +25240,7 @@ ion-content ion-list button #wrapper #byline span {
   background-color: transparent;
 }
 
-ion-content ion-list button #wrapper #byline #author {
+.content-page ion-list button #wrapper #byline #author {
   padding: 0 1% 0 7%;
 }
 
@@ -25254,7 +25254,44 @@ p {
   margin: 0 auto;
 }
 
-ion-content ion-list button {
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.radio-page .img-wrapper {
+  height: 75%;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  align-item: center;
+}
+
+.radio-page .img-wrapper img {
+  display: block;
+  height: auto;
+  width: 95%;
+  margin: auto;
+}
+
+.radio-page .buttons {
+  height: 25%;
+  text-align: center;
+  width: 100%;
+}
+
+.radio-page .buttons button {
+  height: 100%;
+}
+
+.radio-page .buttons button ion-icon {
+  font-size: 65px;
+}
+
+.schedule-page ion-list button {
   background-color: #fff;
   padding: 18px;
   width: 100%;
@@ -25263,11 +25300,40 @@ ion-content ion-list button {
   border-bottom: 1px solid #aaa;
 }
 
-ion-content ion-list button:first-child {
+.schedule-page ion-list button:first-child {
   border-top: 1px solid #aaa;
 }
 
-.video-container {
+.schedule-page .schedule {
+  z-index: 1000000000000;
+  margin: 0 5%;
+}
+
+.schedule-page .schedule h2 {
+  margin: 0;
+  padding: 0;
+}
+
+.schedule-page .schedule ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  height: 40px;
+}
+
+.schedule-page .schedule li {
+  font-size: 20px;
+  margin: 2% 0;
+  padding: 3%;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  display: inline-table;
+  width: 100%;
+  height: 100%;
+}
+
+.card ion-item .video-container {
   position: relative;
   padding-bottom: 56.25%;
   padding-top: 30px;
@@ -25275,7 +25341,7 @@ ion-content ion-list button:first-child {
   overflow: hidden;
 }
 
-.video-container iframe, .video-container object, .video-container embed {
+.card ion-item .video-container iframe {
   position: absolute;
   top: 0;
   left: 0;
