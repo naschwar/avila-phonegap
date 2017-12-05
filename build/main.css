@@ -25281,14 +25281,19 @@ img {
   height: 25%;
   text-align: center;
   width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .radio-page .buttons button {
   height: 100%;
+  width: 50%;
 }
 
 .radio-page .buttons button ion-icon {
-  font-size: 65px;
+  font-size: 45px;
 }
 
 .schedule-page ion-list button {
