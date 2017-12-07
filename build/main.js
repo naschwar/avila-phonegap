@@ -112,11 +112,33 @@ var TabsPage = (function () {
     TabsPage.prototype.requestNowPlaying = function () {
         var _this = this;
         this.restApiProvider.requestNowPlaying()
-            .subscribe(function (nowPlaying) {
-            Object(__WEBPACK_IMPORTED_MODULE_6_xml2js__["parseString"])(nowPlaying, function (err, result) {
-                this.restApiProvider.nowPlaying = result;
+            .subscribe(function (data) {
+            _this.parseXML(data)
+                .then(function (data) {
+                _this.restApiProvider.nowPlaying = data;
             });
-        }, function (error) { return _this.restApiProvider.nowPlaying = null; });
+        });
+    };
+    TabsPage.prototype.parseXML = function (data) {
+        return new Promise(function (resolve) {
+            var k, arr = [], parser = new __WEBPACK_IMPORTED_MODULE_6_xml2js___default.a.Parser({
+                trim: true,
+                explicitArray: true
+            });
+            parser.parseString(data, function (err, result) {
+                var obj = result.comics;
+                for (k in obj.publication) {
+                    var item = obj.publication[k];
+                    arr.push({
+                        id: item.id[0],
+                        title: item.title[0],
+                        publisher: item.publisher[0],
+                        genre: item.genre[0]
+                    });
+                }
+                resolve(arr);
+            });
+        });
     };
     return TabsPage;
 }());
