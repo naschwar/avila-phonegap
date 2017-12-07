@@ -158,7 +158,7 @@ var RadioPage = (function () {
             errorCallback: function (e) { console.log('Error: ', e); },
             initFullscreen: false
         };
-        this.streamingMedia.playAudio('129.65.35.106:8000/KCPRMP3', options);
+        this.streamingMedia.playAudio('129.65.35.106:8000/KCPRHIGH', options);
     };
     RadioPage.prototype.stopAudio = function () {
         this.streamingMedia.stopAudio();
