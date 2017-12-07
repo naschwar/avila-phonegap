@@ -158,7 +158,7 @@ var RadioPage = (function () {
             errorCallback: function (e) { console.log('Error: ', e); },
             initFullscreen: false
         };
-        this.streamingMedia.playAudio('129.65.35.106:8000/KCPRHIGH', options);
+        this.streamingMedia.playAudio('http://soundbible.com/grab.php?id=2196&type=mp3', options);
     };
     RadioPage.prototype.stopAudio = function () {
         this.streamingMedia.stopAudio();
@@ -167,7 +167,7 @@ var RadioPage = (function () {
 }());
 RadioPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-radio',template:/*ion-inline-start:"/home/penax/avila/src/pages/radio/radio.html"*/'<ion-header>\n</ion-header>\n\n<ion-content class="radio-page" padding>\n  <div class="img-wrapper">\n    <img src="assets/img/kcpr.jpg" alt="KCPR logo"/>\n  </div>\n  <div class="buttons">\n    <button ion-button icon-only clear (click)="startAudio()" color="dark">\n      <ion-icon name="play">\n      </ion-icon> \n    </button>\n    <button ion-button icon-only clear (click)="stopAudio()" color="dark">\n      <ion-icon name="square">\n      </ion-icon>\n    </button>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/penax/avila/src/pages/radio/radio.html"*/
+        selector: 'page-radio',template:/*ion-inline-start:"/home/penax/avila/src/pages/radio/radio.html"*/'<ion-header>\n</ion-header>\n\n<ion-content class="radio-page" padding>\n  <div class="img-wrapper">\n    <img src="assets/img/kcpr.jpg" alt="KCPR logo"/>\n  </div>\n  <div class="buttons">\n    <audio preload="metadata" src="http://129.65.35.106:8000/KCPRMP3"></audio>\n    <button ion-button icon-only clear (click)="startAudio()" color="dark">\n      <ion-icon name="play">\n      </ion-icon> \n    </button>\n    <button ion-button icon-only clear (click)="stopAudio()" color="dark">\n      <ion-icon name="square">\n      </ion-icon>\n    </button>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/penax/avila/src/pages/radio/radio.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ionic_native_streaming_media__["a" /* StreamingMedia */]])
 ], RadioPage);
