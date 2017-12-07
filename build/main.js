@@ -156,7 +156,7 @@ var RadioPage = (function () {
         var options = {
             successCallback: function () { console.log('Finished Audio'); },
             errorCallback: function (e) { console.log('Error: ', e); },
-            initFullscreen: false // iOS only!
+            initFullscreen: false
         };
         this.streamingMedia.playAudio('129.65.35.106:8000/KCPRMP3', options);
     };
