@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 137:
+/***/ 111:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -13,11 +13,11 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 137;
+webpackEmptyAsyncContext.id = 111;
 
 /***/ }),
 
-/***/ 178:
+/***/ 152:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -30,26 +30,24 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 178;
+webpackEmptyAsyncContext.id = 152;
 
 /***/ }),
 
-/***/ 223:
+/***/ 197:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__radio_radio__ = __webpack_require__(224);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__content_content__ = __webpack_require__(225);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__schedule_schedule__ = __webpack_require__(229);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__video_video__ = __webpack_require__(231);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_xml2js__ = __webpack_require__(316);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_xml2js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_xml2js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_rest_api_rest_api__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_operator_map__ = __webpack_require__(233);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__radio_radio__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__content_content__ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__schedule_schedule__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__video_video__ = __webpack_require__(205);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_rest_api_rest_api__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_map__ = __webpack_require__(207);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -67,9 +65,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var TabsPage = (function () {
     function TabsPage(http, restApiProvider) {
+        var _this = this;
         this.http = http;
         this.restApiProvider = restApiProvider;
         this.tab1Root = __WEBPACK_IMPORTED_MODULE_1__radio_radio__["a" /* RadioPage */];
@@ -79,7 +77,28 @@ var TabsPage = (function () {
         this.requestPosts();
         this.requestEvents();
         this.requestNowPlaying();
+        setInterval(function () {
+            _this.requestNowPlaying();
+        }, 2000);
     }
+    TabsPage.prototype.ionViewDidEnter = function () {
+    };
+    TabsPage.prototype.parseUrl = function () {
+        var _this = this;
+        this.parseUrlWrapper().then(function (entries) {
+            _this.restApiProvider.entries = entries;
+        });
+    };
+    TabsPage.prototype.parseUrlWrapper = function () {
+        return new Promise(function (resolve, reject) {
+            RSSParser.parseURL("https://spinitron.com/radio/rss.php?station=kcpr", function (err, parsed) {
+                if (err) {
+                    reject(err);
+                }
+                resolve(parsed.feed.entries);
+            });
+        });
+    };
     TabsPage.prototype.requestPosts = function () {
         var _this = this;
         this.restApiProvider.requestInfo("posts", "page=1")
@@ -110,54 +129,27 @@ var TabsPage = (function () {
         }, function (error) { return console.log(error); });
     };
     TabsPage.prototype.requestNowPlaying = function () {
-        var _this = this;
-        this.restApiProvider.requestNowPlaying()
-            .subscribe(function (data) {
-            _this.parseXML(data)
-                .then(function (data) {
-                _this.restApiProvider.nowPlaying = data;
-            });
-        });
-    };
-    TabsPage.prototype.parseXML = function (data) {
-        return new Promise(function (resolve) {
-            var k, arr = [], parser = new __WEBPACK_IMPORTED_MODULE_6_xml2js___default.a.Parser({
-                trim: true,
-                explicitArray: true
-            });
-            parser.parseString(data, function (err, result) {
-                var obj = result.comics;
-                for (k in obj.publication) {
-                    var item = obj.publication[k];
-                    arr.push({
-                        id: item.id[0],
-                        title: item.title[0],
-                        publisher: item.publisher[0],
-                        genre: item.genre[0]
-                    });
-                }
-                resolve(arr);
-            });
-        });
+        this.parseUrl();
     };
     return TabsPage;
 }());
 TabsPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/home/penax/avila/src/pages/tabs/tabs.html"*/'<ion-tabs>\n  <ion-tab [root]="tab1Root" tabIcon="radio"></ion-tab>\n  <ion-tab [root]="tab2Root" tabIcon="paper"></ion-tab>\n  <ion-tab [root]="tab3Root" tabIcon="calendar"></ion-tab>\n  <ion-tab [root]="tab4Root" tabIcon="mic"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/home/penax/avila/src/pages/tabs/tabs.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_7__providers_rest_api_rest_api__["a" /* RestApiProvider */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_6__providers_rest_api_rest_api__["a" /* RestApiProvider */]])
 ], TabsPage);
 
 //# sourceMappingURL=tabs.js.map
 
 /***/ }),
 
-/***/ 224:
+/***/ 198:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RadioPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_rest_api_rest_api__ = __webpack_require__(43);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -168,8 +160,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var RadioPage = (function () {
-    function RadioPage() {
+    function RadioPage(restApiProvider) {
+        var _this = this;
+        this.restApiProvider = restApiProvider;
+        this.restApiProvider.getNowPlaying().subscribe(function (value) {
+            _this.nowPlaying = value;
+        });
     }
     RadioPage.prototype.startAudio = function () {
         var audioPlayer = document.getElementById('player');
@@ -183,24 +181,24 @@ var RadioPage = (function () {
 }());
 RadioPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-radio',template:/*ion-inline-start:"/home/penax/avila/src/pages/radio/radio.html"*/'<ion-header>\n</ion-header>\n\n<ion-content class="radio-page" padding>\n  <div class="img-wrapper">\n    <img src="assets/img/kcpr.jpg" alt="KCPR logo"/>\n  </div>\n  <div class="buttons">\n    <audio id="player">\n      <source src=\'http://129.65.35.106:8000/KCPRMP3\' type="audio/mpeg" /> \n    </audio>\n    <button ion-button icon-only clear (click)="startAudio()" color="dark">\n      <ion-icon name="play">\n      </ion-icon> \n    </button>\n    <button ion-button icon-only clear (click)="stopAudio()" color="dark">\n      <ion-icon name="square">\n      </ion-icon>\n    </button>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/penax/avila/src/pages/radio/radio.html"*/
+        selector: 'page-radio',template:/*ion-inline-start:"/home/penax/avila/src/pages/radio/radio.html"*/'<ion-header>\n</ion-header>\n\n<ion-content class="radio-page" padding>\n  <div class="img-wrapper">\n    <img src="assets/imgs/kcpr.jpg" alt="KCPR logo"/>\n  </div>\n  <div class="buttons">\n    <audio id="player">\n      <source src=\'http://129.65.35.106:8000/KCPRMP3\' type="audio/mpeg" /> \n    </audio>\n    <button ion-button icon-only clear (click)="startAudio()" color="dark">\n      <ion-icon name="play">\n      </ion-icon> \n    </button>\n    <button ion-button icon-only clear (click)="stopAudio()" color="dark">\n      <ion-icon name="square">\n      </ion-icon>\n    </button>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/penax/avila/src/pages/radio/radio.html"*/
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__providers_rest_api_rest_api__["a" /* RestApiProvider */]])
 ], RadioPage);
 
 //# sourceMappingURL=radio.js.map
 
 /***/ }),
 
-/***/ 225:
+/***/ 201:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContentPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__post_detail_post_detail__ = __webpack_require__(226);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_rest_api_rest_api__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__post_detail_post_detail__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_rest_api_rest_api__ = __webpack_require__(43);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -276,13 +274,13 @@ ContentPage = __decorate([
 
 /***/ }),
 
-/***/ 226:
+/***/ 202:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostDetailPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -312,15 +310,15 @@ PostDetailPage = __decorate([
 
 /***/ }),
 
-/***/ 229:
+/***/ 203:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SchedulePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_rest_api_rest_api__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__event_detail_event_detail__ = __webpack_require__(230);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__event_detail_event_detail__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_rest_api_rest_api__ = __webpack_require__(43);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -355,7 +353,7 @@ var SchedulePage = (function () {
         });
     };
     SchedulePage.prototype.itemTapped = function (event, item) {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__event_detail_event_detail__["a" /* EventDetailPage */], {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__event_detail_event_detail__["a" /* EventDetailPage */], {
             item: item
         });
     };
@@ -366,26 +364,43 @@ var SchedulePage = (function () {
         var n = d.getDay();
         return ("<h2>" + scheduleArray[n + 1]);
     };
+    SchedulePage.prototype.extractArtist = function (np) {
+        return np.split(":")[0];
+    };
+    SchedulePage.prototype.extractSong = function (np) {
+        return np.split(":")[1].replace("'", "");
+    };
+    SchedulePage.prototype.convertTime = function (np) {
+        var parts = np.split(" ");
+        var time = parts[4].toString();
+        var timeParts = time.split(":");
+        var amToThePm = "AM"; //flag
+        if (parseInt(timeParts[0]) > 12) {
+            timeParts[0] = (parseInt(timeParts[0]) - 12).toString();
+            amToThePm = "PM";
+        }
+        return timeParts[0] + ":" + timeParts[1] + " " + amToThePm;
+    };
     return SchedulePage;
 }());
 SchedulePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-schedule',template:/*ion-inline-start:"/home/penax/avila/src/pages/schedule/schedule.html"*/'<ion-header>\n</ion-header>\n\n<ion-content class="schedule-page">\n\n  <div padding>\n    <ion-segment [(ngModel)]="programming">\n      <ion-segment-button value="now_playing">\n        Now Playing\n      </ion-segment-button>\n      <ion-segment-button value="shows">\n        Shows\n      </ion-segment-button>\n      <ion-segment-button value="events">\n        Events\n      </ion-segment-button>\n    </ion-segment>\n  </div>\n  \n  <div [ngSwitch]="programming">\n    <ion-list *ngSwitchCase="\'now_playing\'"> \n      <ion-item>\n      </ion-item>\n    </ion-list>\n\n    <div *ngSwitchCase="\'shows\'">\n      <div class="schedule" [innerHTML]="schedule">\n      </div>\n    </div>\n\n    <ion-list *ngSwitchCase="\'events\'">\n      <button *ngFor="let event of events" (click)="itemTapped($event, event)" [innerHTML]="event.title">\n      </button>\n    </ion-list>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/penax/avila/src/pages/schedule/schedule.html"*/
+        selector: 'page-schedule',template:/*ion-inline-start:"/home/penax/avila/src/pages/schedule/schedule.html"*/'<ion-header>\n</ion-header>\n\n<ion-content class="schedule-page">\n\n  <div padding>\n    <ion-segment [(ngModel)]="programming">\n      <ion-segment-button value="now_playing">\n        Now Playing\n      </ion-segment-button>\n      <ion-segment-button value="shows">\n        Shows\n      </ion-segment-button>\n      <ion-segment-button value="events">\n        Events\n      </ion-segment-button>\n    </ion-segment>\n  </div>\n  \n  <div [ngSwitch]="programming">\n    <div class="now_playing">\n      <ion-list *ngSwitchCase="\'now_playing\'"> \n        <ion-item *ngFor="let np of nowPlaying">\n          <div id="songInfo">\n            <strong><span [innerHTML]="extractArtist(np.title)"></span></strong>\n            <span> by </span>\n            <strong><span [innerHTML]="extractSong(np.title)"></span></strong>\n          </div>\n          <div id="time">\n            <span [innerHTML]="convertTime(np.pubDate)"></span>\n          </div>\n        </ion-item>\n      </ion-list>\n    </div>\n\n    <div *ngSwitchCase="\'shows\'">\n      <div class="schedule" [innerHTML]="schedule">\n      </div>\n    </div>\n\n    <ion-list *ngSwitchCase="\'events\'">\n      <button *ngFor="let event of events" (click)="itemTapped($event, event)" [innerHTML]="event.title">\n      </button>\n    </ion-list>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/penax/avila/src/pages/schedule/schedule.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_2__providers_rest_api_rest_api__["a" /* RestApiProvider */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_3__providers_rest_api_rest_api__["a" /* RestApiProvider */]])
 ], SchedulePage);
 
 //# sourceMappingURL=schedule.js.map
 
 /***/ }),
 
-/***/ 230:
+/***/ 204:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EventDetailPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -416,15 +431,15 @@ EventDetailPage = __decorate([
 
 /***/ }),
 
-/***/ 231:
+/***/ 205:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VideoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_youtube_service_youtube_service__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_youtube_service_youtube_service__ = __webpack_require__(206);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -488,14 +503,14 @@ VideoPage = __decorate([
 
 /***/ }),
 
-/***/ 232:
+/***/ 206:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return YoutubeServiceProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(207);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -532,13 +547,13 @@ YoutubeServiceProvider = __decorate([
 
 /***/ }),
 
-/***/ 241:
+/***/ 208:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(242);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(259);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(209);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(226);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -546,28 +561,28 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 259:
+/***/ 226:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(299);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_radio_radio__ = __webpack_require__(224);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_content_content__ = __webpack_require__(225);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_event_detail_event_detail__ = __webpack_require__(230);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_schedule_schedule__ = __webpack_require__(229);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_video_video__ = __webpack_require__(231);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_post_detail_post_detail__ = __webpack_require__(226);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_tabs_tabs__ = __webpack_require__(223);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_status_bar__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_splash_screen__ = __webpack_require__(222);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__angular_http__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__angular_common_http__ = __webpack_require__(227);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__providers_rest_api_rest_api__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__providers_youtube_service_youtube_service__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(266);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_radio_radio__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_content_content__ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_event_detail_event_detail__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_schedule_schedule__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_video_video__ = __webpack_require__(205);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_post_detail_post_detail__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_tabs_tabs__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_status_bar__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_splash_screen__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__angular_http__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__angular_common_http__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__providers_rest_api_rest_api__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__providers_youtube_service_youtube_service__ = __webpack_require__(206);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -640,16 +655,16 @@ AppModule = __decorate([
 
 /***/ }),
 
-/***/ 299:
+/***/ 266:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(222);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_tabs_tabs__ = __webpack_require__(223);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_tabs_tabs__ = __webpack_require__(197);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -686,22 +701,22 @@ MyApp = __decorate([
 
 /***/ }),
 
-/***/ 60:
+/***/ 43:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RestApiProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(199);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of__ = __webpack_require__(310);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of__ = __webpack_require__(277);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch__ = __webpack_require__(311);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch__ = __webpack_require__(278);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_retry__ = __webpack_require__(313);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_retry__ = __webpack_require__(280);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_retry___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_retry__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_observable_throw__ = __webpack_require__(315);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_observable_throw__ = __webpack_require__(282);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_observable_throw___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_observable_throw__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -733,6 +748,7 @@ var RestApiProvider = (function () {
         this.bylines = [];
         this.categories = [];
         this.events = [];
+        this.entries = [];
     }
     RestApiProvider.prototype.requestInfo = function (endpoint, query) {
         var searchUrl;
@@ -798,7 +814,7 @@ var RestApiProvider = (function () {
         return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].of(this.schedule);
     };
     RestApiProvider.prototype.getNowPlaying = function () {
-        return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].of(this.nowPlaying);
+        return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].of(this.entries);
     };
     return RestApiProvider;
 }());
@@ -811,5 +827,5 @@ RestApiProvider = __decorate([
 
 /***/ })
 
-},[241]);
+},[208]);
 //# sourceMappingURL=main.js.map

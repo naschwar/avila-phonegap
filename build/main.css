@@ -25310,7 +25310,6 @@ img {
 }
 
 .schedule-page .schedule {
-  z-index: 1000000000000;
   margin: 0 5%;
 }
 
@@ -25336,6 +25335,10 @@ img {
   display: inline-table;
   width: 100%;
   height: 100%;
+}
+
+.schedule-page .now_playing #time {
+  color: #777;
 }
 
 .card ion-item .video-container {
