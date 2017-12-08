@@ -134,7 +134,7 @@ var TabsPage = (function () {
     return TabsPage;
 }());
 TabsPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/home/penax/avila/src/pages/tabs/tabs.html"*/'<ion-tabs>\n  <ion-tab [root]="tab1Root" tabIcon="radio"></ion-tab>\n  <ion-tab [root]="tab2Root" tabIcon="paper"></ion-tab>\n  <ion-tab [root]="tab3Root" tabIcon="calendar"></ion-tab>\n  <ion-tab [root]="tab4Root" tabIcon="mic"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/home/penax/avila/src/pages/tabs/tabs.html"*/
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/home/penax/avila/src/pages/tabs/tabs.html"*/'<ion-tabs>\n  <ion-tab [root]="tab1Root" tabIcon="musical-notes"></ion-tab>\n  <ion-tab [root]="tab2Root" tabIcon="paper"></ion-tab>\n  <ion-tab [root]="tab3Root" tabIcon="calendar"></ion-tab>\n  <ion-tab [root]="tab4Root" tabIcon="play"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/home/penax/avila/src/pages/tabs/tabs.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_6__providers_rest_api_rest_api__["a" /* RestApiProvider */]])
 ], TabsPage);
